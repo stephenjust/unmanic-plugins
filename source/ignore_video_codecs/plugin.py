@@ -89,6 +89,13 @@ class PluginStreamMapper(StreamMapper):
             return False
         return True
 
+    def custom_stream_mapping(self, stream_info: dict, stream_id: int):
+        # Skip mapping
+        return {
+            'stream_mapping':  [],
+            'stream_encoding': [],
+        }
+
 
 def on_library_management_file_test(data):
     """
