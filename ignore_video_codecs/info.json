@@ -1,0 +1,15 @@
+{
+    "id": "ignore_video_codecs",
+    "name": "Ignore video files by codec",
+    "author": "stephenjust",
+    "version": "0.0.1",
+    "description": "",
+    "icon": "",
+    "tags": "ffmpeg,library file test",
+    "compatibility": [
+        1
+    ],
+    "priorities": {
+        "on_library_management_file_test": 2
+    }
+}

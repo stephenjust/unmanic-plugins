@@ -1,0 +1,26 @@
+{
+    "repo": {
+        "id": "repository.stephenjust",
+        "name": "stephenjust's unmanic plugins",
+        "icon": "",
+        "repo_data_directory": "https://raw.githubusercontent.com/stephenjust/unmanic-plugins/repo/",
+        "repo_data_url": "https://raw.githubusercontent.com/stephenjust/unmanic-plugins/repo/repo/repo.json"
+    },
+    "plugins": [
+        {
+            "id": "ignore_video_codecs",
+            "name": "Ignore video files by codec",
+            "author": "stephenjust",
+            "version": "0.0.1",
+            "description": "",
+            "icon": "",
+            "tags": "ffmpeg,library file test",
+            "compatibility": [
+                1
+            ],
+            "priorities": {
+                "on_library_management_file_test": 2
+            }
+        }
+    ]
+}
