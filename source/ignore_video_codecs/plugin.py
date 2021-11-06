@@ -78,13 +78,14 @@ class PluginStreamMapper(StreamMapper):
         'xwd',
     ]
 
-    def __init__(self):
+    def __init__(self, excluded_codecs: list):
         super(PluginStreamMapper, self).__init__(logger, ['video'])
+        self.excluded_codecs = excluded_codecs
 
     def test_stream_needs_processing(self, excluded_codecs: list, stream_info: dict):
         if stream_info.get('codec_name').lower() in self.image_video_codecs:
             return False
-        elif stream_info.get('codec_name').lower() in excluded_codecs:
+        elif stream_info.get('codec_name').lower() in self.excluded_codecs:
             return False
         return True
 
@@ -108,15 +109,15 @@ def on_library_management_file_test(data):
         # File probe failed, skip the rest of this test
         return data
 
-    # Get stream mapper
-    mapper = PluginStreamMapper()
-    mapper.set_probe(probe)
-
     # Get settings
     settings = Settings()
     excluded_codecs = [x.strip().lower() for x in settings.get_setting("excluded_codecs").split(',')]
 
-    if mapper.streams_need_processing(excluded_codecs):
+    # Get stream mapper
+    mapper = PluginStreamMapper(excluded_codecs)
+    mapper.set_probe(probe)
+
+    if mapper.streams_need_processing():
         # Mark this file to be added to the pending tasks
         data['add_file_to_pending_tasks'] = True
         logger.debug("File '{}' should be added to task list. Probe found streams require processing.".format(abspath))
