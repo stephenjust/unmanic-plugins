@@ -19,7 +19,7 @@ import logging
 
 from unmanic.libs.unplugins.settings import PluginSettings
 
-from lib.ffmpeg import StreamMapper, Probe
+from ignore_video_codecs.lib.ffmpeg import StreamMapper, Probe
 
 # Configure plugin logger
 logger = logging.getLogger("Unmanic.Plugin.ignore_video_codecs")
