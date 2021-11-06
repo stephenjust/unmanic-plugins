@@ -125,10 +125,11 @@ def on_library_management_file_test(data):
     mapper.set_probe(probe)
 
     if mapper.streams_need_processing():
-        # Mark this file to be added to the pending tasks
-        data['add_file_to_pending_tasks'] = True
-        logger.debug("File '{}' should be added to task list. Probe found streams require processing.".format(abspath))
+        # Don't ignore this file
+        logger.debug("File '{}' does not contain streams with an ignored codec.".format(abspath))
     else:
-        logger.debug("File '{}' does not contain streams require processing.".format(abspath))
+        # Ignore this file
+        data['add_file_to_pending_tasks'] = False
+        logger.debug("File '{}' contains an ignored video codec.".format(abspath))
 
     return data
