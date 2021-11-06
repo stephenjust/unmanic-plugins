@@ -82,7 +82,7 @@ class PluginStreamMapper(StreamMapper):
         super(PluginStreamMapper, self).__init__(logger, ['video'])
         self.excluded_codecs = excluded_codecs
 
-    def test_stream_needs_processing(self, excluded_codecs: list, stream_info: dict):
+    def test_stream_needs_processing(self, stream_info: dict):
         if stream_info.get('codec_name').lower() in self.image_video_codecs:
             return False
         elif stream_info.get('codec_name').lower() in self.excluded_codecs:
