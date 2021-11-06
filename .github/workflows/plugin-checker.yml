@@ -266,7 +266,7 @@ jobs:
       if: success()
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 3.9
 
     # Setup node environment
     - name: Set up node 16
