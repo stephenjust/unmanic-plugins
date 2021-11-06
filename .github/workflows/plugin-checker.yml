@@ -234,6 +234,8 @@ jobs:
     - name: Checkout
       if: steps.previous_jobs_success.outputs.IS_SUCCESS == 'true'
       uses: actions/checkout@v2
+      with:
+        submodules: recursive
 
     # Ensure repo is checked out
     - name: Check repo for config file
